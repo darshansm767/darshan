@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>School - Admissions</title>
+    <style>
+
+
+:root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text-color);
+    }
+
+    h1 { font-size: 2.8rem; color: var(--dark-bg); }
+    h2 { font-size: 2.2rem; color: var(--dark-bg); }
+    h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+    .containera {
+        height: 60%;
+        width: 100%;
+        margin: 0;
+        border: 1px solid #ccc;
+        color: white;
+        background-color: var(--dark-bg);
+    }
+    .top-header {
+        padding: 20px 0;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+    }
+    .newsletter-container {
+        display: inline-block;
+        text-align: center;
+       
+    }
+    .newsletter-container h2{
+      color:white;
+    }
+    .input-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .input-group input {
+        padding: 8px;
+        width: 250px;
+    }
+    .input-group button {
+        padding: 8px 20px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .three-section {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+    .header1 {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+    .header1 p {
+      background-color: #2A5C82;;
+        color:rgb(255, 255, 255);
+        padding-top: 20%;
+        font-size: 1.2em;
+    }
+    .logo {
+        margin-top: -10%;
+        width: 130px;
+        height: auto;
+        margin-left: -250px;
+    }
+
+    .contact-details h2{
+      color:white;
+        flex: 1;
+        margin: 10px;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        flex: 1;
+        margin: 10px;
+        padding: 10px;
+        align-content: flex-start;
+    }
+
+    .social-icons h2 {
+      color:white;
+        width: 100%;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .social-icons a {
+        font-size: 24px;
+        transition: transform 0.3s ease;
+        text-decoration: none;
+    }
+
+    .social-icons a:hover {
+        transform: translateY(-3px);
+    }
+    .social-icons .fa-instagram { color: #e1306c; }
+    .social-icons .fa-whatsapp { color: #25d366; }
+    .social-icons .fa-x { color: #000000; }
+    .social-icons .fa-linkedin { color: #0077b5; }
+    .social-icons a:hover .fa-instagram { color: #c13584; }
+    .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+    .social-icons a:hover .fa-x { color: #333333; }
+    .social-icons a:hover .fa-linkedin { color: #005582; }
+
+    footer {
+        padding: 20px;
+        text-align: center;
+        background-color: var(--dark-bg);
+    }
+
+
+        /* Previous styles remain same */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Rest of previous styles remain same */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2c5f2d;
+            color: white;
+        }
+
+        .highlight {
+            color: #2c5f2d;
+            font-weight: bold;
+        }
+
+        .contact-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .btn {
+            background-color: #2c5f2d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .image-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .banner-image {
+            flex: 1 1 45%;
+            /* Allows images to grow/shrink but maintain minimum 45% width */
+            max-width: 700px;
+            /* Adjusted from 800px */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        :root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    h1 { font-size: 2.8rem; color: var(--dark-bg); }
+    h2 { font-size: 2.2rem; color: var(--dark-bg); }
+    h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+    h2::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+      display: block;
+      margin-top: 5px;
+    }
+
+    .header_h  {
+      background-color: var(--dark-bg);
+  
+      padding: 1rem 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header_h  h1{
+      color:rgb(255, 255, 255);
+    }
+    .header_h img.logo_h {
+      width: 10%;
+      padding-top:10px;
+      padding-right:50px;
+      display:flex;
+      margin-right: 1rem;
+    }
+
+    nav {
+      background-color: var(--dark-bg);
+      text-align: center;
+    }
+    
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    nav a:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    /* Facility Dropdown Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .sidebar {
+      display: none;
+      position: absolute;
+      background-color: #2A5C82;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+    }
+    .dropdown:hover .sidebar {
+      display: block;
+    }
+    .sidebar a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    .sidebar a:hover {
+      background-color: #D4AF37;
+    }
+
+    </style>
+</head>
+
+<body>
+<header class="header_h">
+    <img class="logo_h" src="img/logo.png" alt="School Logo">
+    <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+  </header>
+
+
+
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="admissions.html">Admissions</a></li>
+      <li><a href="events.html">School Events</a></li>
+      <li><a href="Faculty.html">Faculty</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+     
+    </ul>
+  </nav>
+
+    <div class="container">
+        <section class="section">
+            <h2>Admission Process</h2>
+            <ol>
+                <li>Registration: Submit online application form</li>
+                <li>Document Verification</li>
+                <li>Entrance Assessment (For Grades 3-10)</li>
+                <li>Admission Confirmation</li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2>Fee Structure (2024-2025)</h2>
+            <table>
+                <tr>
+                    <th>Grade</th>
+                    <th>Annual Tuition Fee</th>
+                    <th>Development Fee</th>
+                    <th>Total Annual Fee</th>
+                </tr>
+                <tr>
+                    <td>Grade 1-5</td>
+                    <td>₹65,000</td>
+                    <td>₹15,000</td>
+                    <td class="highlight">₹80,000</td>
+                </tr>
+                <tr>
+                    <td>Grade 6-8</td>
+                    <td>₹75,000</td>
+                    <td>₹20,000</td>
+                    <td class="highlight">₹95,000</td>
+                </tr>
+                <tr>
+                    <td>Grade 9-10</td>
+                    <td>₹85,000</td>
+                    <td>₹25,000</td>
+                    <td class="highlight">₹1,10,000</td>
+                </tr>
+            </table>
+            <p>* Includes laboratory fees, library charges, and sports facility access</p>
+        </section>
+
+        <div class="image-container">
+            <img src="img/a-school.webp" alt="School Campus" class="banner-image">
+            <img src="img/a-school2.webp" alt="School Campus" class="banner-image">
+        </div>
+
+        <section class="section">
+            <h2>Admission Requirements</h2>
+            <ul>
+                <li>Completed application form</li>
+                <li>Birth certificate</li>
+                <li>Previous year's report card</li>
+                <li>Transfer certificate (For Grade 2-10)</li>
+                <li>Passport-size photographs (4 copies)</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Why Choose Green Valley?</h2>
+            <div class="highlights">
+                <p>🏆 CBSE Affiliated (Affiliation No: 123456)</p>
+                <p>👩🏫 Experienced Faculty (1:20 Teacher-Student Ratio)</p>
+                <p>💻 Smart Class Technology</p>
+                <p>🏊 Olympic-size Swimming Pool</p>
+                <p>📚 50,000+ Volume Library</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Important Dates</h2>
+            <p>📅 Application Deadline: December 31, 2023</p>
+            <p>📝 Entrance Test: January 15, 2024</p>
+            <p>🎓 Session Begins: April 1, 2024</p>
+        </section>
+
+        <section class="section">
+            <h2>Contact Admissions</h2>
+            <div class="contact-box">
+                <div>
+                    <h3>Visit Us</h3>
+                    <p>Green Valley Campus<br>
+                        Sector 45, Educational Enclave<br>
+                        New Delhi - 110045<br>
+                        Phone: 011-25698745<br>
+                        Email: admissions@gvis.in
+                    </p>
+                </div>
+                <div>
+                    <form method="post">
+                        <div class="form-group">
+                            <input type="text" name="Parent_name" placeholder="Parent Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone_number" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit Inquiry</button>
+                        <?php if ($msg != '') { ?>
+                            <p class="<?php echo (strpos($msg, 'error') !== false) ? 'error' : 'message'; ?>">
+                                <?php echo $msg; ?>
+                            </p>
+                        <?php } ?>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="containera">
+    <!-- Top header: Newsletter centered -->
+    <div class="top-header">
+      <div class="newsletter-container">
+        <h2>Subscribe</h2>
+        <!-- Display subscription message if exists -->
+        <?php if($message): ?>
+          <p><?php echo $message; ?></p>
+        <?php endif; ?>
+        <!-- Newsletter form with method, action, and onsubmit attribute -->
+        <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+          <label for="newsletter-email" hidden>Your Email:</label>
+          <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Three sections: Header, Quick Links, Contact Details -->
+    <div class="three-section">
+      <div class="header1">
+        <p> APJ Abdul Kalam Higher Primary School.<br>
+        Channagiri - 577213</p>
+        <img class="logo" src="img/logo.png" alt="Logo">
+      </div>
+
+      <div class="social-icons">
+      <h2> FOLLOW US ON </h2>
+          <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      <div class="contact-details">
+        <h2>Contact Details</h2>
+        <address class="address">
+          <strong>Address:</strong><br>
+          Opposite of Forest Office, NH_13<br>
+          Channagiri - 577213
+          </address>
+        <div class="contact-number">
+          <strong>Contact Number:</strong><br>
+          +91 9880231572 | +91 9008390323
+        </div>
+        <div class="email">
+          <strong>Email:</strong>  apjschool@gmail.com
+        </div>
+       
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+      APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.
+      Channagiri (T), Davanagere (D) </p>
+    </footer>
+  </div>
+  <script>
+    function validateEmailJS() {
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+      // Simple email regex validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+
+</html>

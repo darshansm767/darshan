@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Court - [College Name]</title>
+    <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333333;       /* Main body text */
+            --dark-bg: #2A5C82;          /* Headings/nav background */
+            --secondary-color: #6A8A82;  /* Subheadings */
+            --accent-color: #D4AF37;     /* Accents/links */
+            --background-color: #FFFCF2; /* Light background */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Typography Hierarchy */
+        h1 { 
+            font-size: 2.8rem; 
+            color: var(--dark-bg);
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 { 
+            font-size: 2.2rem; 
+            color: var(--dark-bg);
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        h3 { 
+            font-size: 1.5rem; 
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Modern Grid Layout */
+        .day-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-card {
+            background: white;
+            margin: 1.5rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        /* Interactive Elements */
+        .day-card {
+            position: relative;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .day-card:hover {
+            border-color: var(--accent-color);
+            background: #f8f9fa;
+        }
+
+        /* Consistent Styling */
+        ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .price-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container {
+                padding: 1rem;
+            }
+            .menu-card {
+                padding: 1.5rem;
+            }
+            .day-menu {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Additional Styling from Original */
+        .meal-time {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            padding-left: 1rem;
+            border-left: 3px solid transparent;
+        }
+
+        .day-card:hover .meal-time {
+            max-height: 500px;
+            opacity: 1;
+            margin: 1rem 0;
+            border-left-color: var(--dark-bg);
+        }
+
+        .hygiene-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--dark-bg);
+            color: white;
+            border-radius: 25px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            color: var(--text-color);
+            transition: transform 0.2s ease;
+        }
+
+        .payment-icon:hover {
+            transform: scale(1.1);
+            color: var(--dark-bg);
+        }
+
+        .special-item {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--dark-bg) 100%);
+            color: white;
+        }
+        :root {
+    --text-color: #333333;
+    --dark-bg: #2A5C82;
+    --secondary-color: #6A8A82;
+    --accent-color: #D4AF37;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  h1 { font-size: 2.8rem; color: var(--dark-bg); }
+  h2 { font-size: 2.2rem; color: var(--dark-bg); }
+  h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+  .containera {
+      width: 100%;
+      margin: 0;
+      color: white;
+      background-color: var(--dark-bg);
+  }
+  .top-header {
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+  }
+  .newsletter-container {
+      display: inline-block;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  .newsletter-container h2{
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+  }
+  .input-group input {
+      padding: 12px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+  .input-group button {
+      padding: 12px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+  }
+  .input-group button:hover {
+      background-color: #c19a2f;
+  }
+  .three-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+  }
+  .header1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0;
+  }
+  .header1 p {
+    background-color: #2A5C82;
+      color: rgb(255, 255, 255);
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      padding: 0;
+  }
+  .logo {
+      width: 130px;
+      height: auto;
+      margin: 0 auto;
+  }
+
+  .contact-details h2,
+  .social-icons h2 {
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .contact-details {
+      text-align: center;
+      padding: 20px 0;
+  }
+
+  .contact-details address,
+  .contact-details .contact-number,
+  .contact-details .email {
+      margin-bottom: 15px;
+      line-height: 1.6;
+  }
+
+  .social-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+  }
+
+  .social-icons-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+  }
+
+  .social-icons a {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+  }
+
+  .social-icons a:hover {
+      transform: translateY(-3px);
+  }
+  .social-icons .fa-instagram { color: #e1306c; }
+  .social-icons .fa-whatsapp { color: #25d366; }
+  .social-icons .fa-x { color: #000000; }
+  .social-icons .fa-linkedin { color: #0077b5; }
+  .social-icons a:hover .fa-instagram { color: #c13584; }
+  .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+  .social-icons a:hover .fa-x { color: #333333; }
+  .social-icons a:hover .fa-linkedin { color: #005582; }
+
+  footer {
+      padding: 20px;
+      text-align: center;
+      background-color: var(--dark-bg);
+      font-size: 0.9em;
+      line-height: 1.6;
+  }
+  footer p{
+    background-color: #2A5C82;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+      .three-section {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+      }
+      
+      .header1,
+      .contact-details,
+      .social-icons {
+          flex: 1;
+          min-width: 300px;
+          max-width: 400px;
+      }
+      
+      .input-group {
+          flex-direction: row;
+      }
+      
+      .input-group input {
+          width: 250px;
+      }
+      
+      .header1 {
+          flex-direction: row;
+          text-align: left;
+          align-items: flex-start;
+      }
+      
+      .logo {
+          margin-left: 20px;
+          margin-top: 0;
+      }
+      
+      .contact-details h2,
+      .social-icons h2 {
+          text-align: left;
+      }
+      
+      .social-icons {
+          align-items: flex-start;
+      }
+      
+      .social-icons-container {
+          justify-content: flex-start;
+      }
+  }
+  :root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--dark-bg);
+      margin: 0;
+    }
+
+    .header_h {
+      background-color: var(--dark-bg);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .header_h h1 {
+      color: white;
+      text-align: center;
+    }
+
+    .header_h img.logo_h {
+      width: 80px;
+      height: auto;
+      margin-right: 1rem;
+    }
+
+    nav {
+      background-color: var(--dark-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      list-style: none;
+    }
+
+    nav ul {
+      
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      position: relative;
+      margin:20px;
+      
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 12px 14px;
+      text-decoration: none;
+      font-size: 1rem;
+      list-style: none;
+
+    }
+
+    nav a:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    /* Dropdown styles */
+    .dropdown .sidebar {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-bg);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      z-index: 1001;
+      flex-direction: column;
+    }
+
+    .dropdown:hover .sidebar {
+      display: flex;
+    }
+
+    .sidebar a {
+      color: white;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Responsive Header */
+    @media (max-width: 768px) {
+      .header_h {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      .header_h img.logo_h {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 60px;
+      }
+
+      .header_h h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      nav li{
+        margin:0px;
+        
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header_h h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+      }
+    }
+    </style>
+</head>
+<body>
+    <header class="header_h">
+        <img class="logo_h" src="logo.png" alt="School Logo" />
+        <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+      </header>
+    
+      <nav>
+        <ul>
+          <li><a href="newhome.html">Home</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="Academics.html">Academics</a></li>
+          <li><a href="admissionnew.html">Admissions</a></li>
+          <li class="dropdown">
+            <a href="#">Facility</a>
+            <div class="sidebar">
+              <a href="lab.html">Laboratories</a>
+              <a href="library.html">Library</a>
+              <a href="hostel.html">Hostel</a>
+              <a href="trasport.html">Transport</a>
+              <a href="sports.html">Sports</a>
+              <a href="canteen.html">Food Court</a>
+              <a href="safty.html">Student Safety</a>
+            </div>
+          </li>
+          <li><a href="event.html">School Events</a></li>
+          <li><a href="Faculty.html">Faculty</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+        </ul>
+      </nav>
+    <div class="container">
+        
+        <div class="menu-card">
+            <h2><i class="fas fa-utensils"></i> Daily Menu</h2>
+            <div class="day-menu">
+                <!-- Monday Menu -->
+                <div class="day-card">
+                    <h3>Monday: Veggie Delight</h3>
+                    <div class="meal-time">
+                        <h4>Breakfast</h4>
+                        <p>Poha, Idli, Coconut Chutney, Sambar</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Lunch</h4>
+                        <p>Jeera Rice, Dal Tadka, Mix Veg Sabzi, Roti, Salad</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Snacks</h4>
+                        <p>Vegetable Cutlet, Lemon Tea</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Dinner</h4>
+                        <p>Chapati, Paneer Butter Masala, Steamed Rice, Raita</p>
+                    </div>
+                </div>
+    
+                <!-- Tuesday Menu -->
+                <div class="day-card">
+                    <h3>Tuesday: North Indian Special</h3>
+                    <div class="meal-time">
+                        <h4>Breakfast</h4>
+                        <p>Aloo Paratha, Curd, Pickle</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Lunch</h4>
+                        <p>Rajma Chawal, Kadhi Pakora, Roti, Boondi Raita</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Snacks</h4>
+                        <p>Samosa, Jalebi, Milk</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Dinner</h4>
+                        <p>Mixed Veg Pulao, Dal Makhani, Salad</p>
+                    </div>
+                </div>
+    
+                <!-- Wednesday Menu -->
+                <div class="day-card">
+                    <h3>Wednesday: South Indian Flavors</h3>
+                    <div class="meal-time">
+                        <h4>Breakfast</h4>
+                        <p>Dosa, Medu Vada, Sambar, Coconut Chutney</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Lunch</h4>
+                        <p>Vegetable Biryani, Mirchi Ka Salan, Curd</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Snacks</h4>
+                        <p>Bonda, Upma, Coffee</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Dinner</h4>
+                        <p>Ragi Roti, Palak Paneer, Steamed Rice</p>
+                    </div>
+                </div>
+    
+                <!-- Thursday Menu -->
+                <div class="day-card">
+                    <h3>Thursday: Healthy Choices</h3>
+                    <div class="meal-time">
+                        <h4>Breakfast</h4>
+                        <p>Oats Upma, Sprouts Salad, Fruit Juice</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Lunch</h4>
+                        <p>Multigrain Roti, Lauki Chana Dal, Brown Rice, Salad</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Snacks</h4>
+                        <p>Roasted Makhana, Herbal Tea</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Dinner</h4>
+                        <p>Millet Khichdi, Stir-fried Vegetables, Buttermilk</p>
+                    </div>
+                </div>
+    
+                <!-- Friday Menu -->
+                <div class="day-card">
+                    <h3>Friday: Fun Friday Feast</h3>
+                    <div class="meal-time">
+                        <h4>Breakfast</h4>
+                        <p>Pancakes, Scrambled Eggs, Fresh Fruits</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Lunch</h4>
+                        <p>Veg Fried Rice, Manchurian, Noodles</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Snacks</h4>
+                        <p>French Fries, Fresh Juice</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Dinner</h4>
+                        <p>Pizza, Garlic Bread, Salad</p>
+                    </div>
+                </div>
+    
+                <!-- Saturday Menu -->
+                <div class="day-card">
+                    <h3>Saturday: Regional Special</h3>
+                    <div class="meal-time">
+                        <h4>Breakfast</h4>
+                        <p>Misal Pav, Sheera</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Lunch</h4>
+                        <p>Thalipeeth, Bharli Vangi, Curd Rice</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Snacks</h4>
+                        <p>Sabudana Khichdi, Buttermilk</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Dinner</h4>
+                        <p>Jowar Roti, Baingan Bharta, Dal</p>
+                    </div>
+                </div>
+    
+                <!-- Sunday Menu -->
+                <div class="day-card">
+                    <h3>Sunday: Special Brunch</h3>
+                    <div class="meal-time">
+                        <h4>Brunch</h4>
+                        <p>Chole Bhature, Lassi, Gulab Jamun</p>
+                    </div>
+                    <div class="meal-time">
+                        <h4>Dinner</h4>
+                        <p>Khichdi, Kadhi, Papad, Pickle</p>
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+
+        <!-- Special Item Section -->
+        <div class="menu-card special-item">
+            <h2><i class="fas fa-star"></i> Special Item of the Day</h2>
+            <p>Today's Special: Gourmet Grilled Cheese Sandwich with Masala Chai</p>
+        </div>
+
+        <!-- Card System -->
+        <div class="menu-card">
+            <h2><i class="fas fa-credit-card"></i> Meal Cards</h2>
+            <div class="price-tag">Student Monthly Card: ₹2,500</div>
+            <div class="price-tag">Faculty Card: ₹3,500</div>
+        </div>
+
+        <!-- Hygiene Section -->
+        <div class="menu-card">
+            <h2><i class="fas fa-hand-holding-water"></i> Hygiene Standards</h2>
+            <div class="hygiene-badge">
+                <i class="fas fa-certificate"></i>
+                <span>FSSAI Certified Kitchen</span>
+            </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="menu-card">
+            <h2><i class="fas fa-wallet"></i> Payment Options</h2>
+            <div class="payment-methods">
+                <i class="fab fa-google-pay payment-icon"></i>
+                <i class="fab fa-paytm payment-icon"></i>
+                <i class="fas fa-credit-card payment-icon"></i>
+            </div>
+        </div>
+
+        <!-- Timings Section -->
+        <div class="menu-card">
+            <h2><i class="fas fa-clock"></i> Opening Hours</h2>
+            <p>Monday-Friday: 7 AM - 8 PM</p>
+            <p>Weekends: 8 AM - 7 PM</p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="menu-card">
+            <h2><i class="fas fa-phone-alt"></i> Contact Us</h2>
+            <p>Phone: XXXX-XXXXXX</p>
+            <p>Email: foodcourt@college.edu</p>
+        </div>
+    </div>
+
+    </div>
+    <div class="containera">
+    <!-- Top header: Newsletter centered -->
+    <div class="top-header">
+      <div class="newsletter-container">
+        <h2>Subscribe</h2>
+        <!-- Display subscription message if exists -->
+        <?php if($message): ?>
+          <p><?php echo $message; ?></p>
+        <?php endif; ?>
+        <!-- Newsletter form with method, action, and onsubmit attribute -->
+        <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+          <label for="newsletter-email" hidden>Your Email:</label>
+          <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Three sections: Header, Quick Links, Contact Details -->
+    <div class="three-section">
+      <div class="header1">
+        <p>APJ Abdul Kalam Higher Primary School.<br>
+        Channagiri - 577213</p>
+        <img class="logo" src="logo.png" alt="Logo">
+      </div>
+
+      <div class="social-icons">
+        <h2>FOLLOW US ON</h2>
+        <div class="social-icons-container">
+          <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-details">
+        <h2>Contact Details</h2>
+        <address class="address">
+          <strong>Address:</strong><br>
+          Opposite of Forest Office, NH_13<br>
+          Channagiri - 577213
+        </address>
+        <div class="contact-number">
+          <strong>Contact Number:</strong><br>
+          +91 9880231572 | +91 9008390323
+        </div>
+        <div class="email">
+          <strong>Email:</strong> apjschool@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+      APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.<br>
+      Channagiri (T), Davanagere (D)</p>
+    </footer>
+  </div>
+    <script>
+        // Enhanced intersection observer with delay
+        const cards = document.querySelectorAll('.menu-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if(entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = '0.6s all ease';
+            observer.observe(card);
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const days = document.querySelectorAll('.day-card');
+            if(e.key === 'Enter') {
+                days.forEach(day => {
+                    day.classList.toggle('show-meals');
+                });
+            }
+        });
+      
+    function validateEmailJS() {
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+      // Simple email regex validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+    
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Hostel Name] - Safe & Connected Stay</title>
+    <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333333;
+            --dark-bg: #2A5C82;
+            --secondary-color: #6A8A82;
+            --accent-color: #D4AF37;
+            --light-bg: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        h1 { font-size: 2.8rem; color: var(--dark-bg); }
+        h2 { font-size: 2.2rem; color: var(--dark-bg); }
+        h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+        h2::after {
+            content: "";
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            display: block;
+            margin: 10px auto;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s ease-in-out;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+            background: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--dark-bg);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover i {
+            transform: scale(1.2);
+            color: var(--secondary-color);
+        }
+
+        .sub-section h3 {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .sub-section h3::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* Matches header height */
+        }
+        
+        section {
+            scroll-margin-top: 100px; /* Prevents content hiding under fixed header */
+        }
+        :root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--dark-bg);
+      margin: 0;
+    }
+
+    .header_h {
+      background-color: var(--dark-bg);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .header_h h1 {
+      color: white;
+      text-align: center;
+    }
+
+    .header_h img.logo_h {
+      width: 80px;
+      height: auto;
+      margin-right: 1rem;
+    }
+
+    nav {
+      background-color: var(--dark-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      list-style: none;
+    }
+
+    nav ul {
+      
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      position: relative;
+      margin:20px;
+      
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 12px 14px;
+      text-decoration: none;
+      font-size: 1rem;
+      list-style: none;
+
+    }
+
+    nav a:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    /* Dropdown styles */
+    .dropdown .sidebar {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-bg);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      z-index: 1001;
+      flex-direction: column;
+    }
+
+    .dropdown:hover .sidebar {
+      display: flex;
+    }
+
+    .sidebar a {
+      color: white;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Responsive Header */
+    @media (max-width: 768px) {
+      .header_h {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      .header_h img.logo_h {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 60px;
+      }
+
+      .header_h h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      nav li{
+        margin:0px;
+        
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header_h h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+      }
+    }
+    :root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text-color);
+      margin: 0;
+    }
+
+    h1 { font-size: 2.8rem; color: var(--dark-bg); }
+    h2 { font-size: 2.2rem; color: var(--dark-bg); }
+    h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+    .containera {
+        width: 100%;
+        margin: 0;
+        color: white;
+        background-color: var(--dark-bg);
+    }
+    .top-header {
+        padding: 20px 0;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+    }
+    .newsletter-container {
+        display: inline-block;
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .newsletter-container h2{
+      color:white;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .input-group input {
+        padding: 12px;
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .input-group button {
+        padding: 12px 20px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .input-group button:hover {
+        background-color: #c19a2f;
+    }
+    .three-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+    .header1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .header1 p {
+        color: rgb(255, 255, 255);
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+    .logo {
+        width: 130px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .contact-details h2,
+    .social-icons h2 {
+      color:white;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .contact-details {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .contact-details address,
+    .contact-details .contact-number,
+    .contact-details .email {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .social-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .social-icons-container {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 10px;
+    }
+
+    .social-icons a {
+        font-size: 28px;
+        transition: transform 0.3s ease;
+        text-decoration: none;
+    }
+
+    .social-icons a:hover {
+        transform: translateY(-3px);
+    }
+    .social-icons .fa-instagram { color: #e1306c; }
+    .social-icons .fa-whatsapp { color: #25d366; }
+    .social-icons .fa-x { color: #000000; }
+    .social-icons .fa-linkedin { color: #0077b5; }
+    .social-icons a:hover .fa-instagram { color: #c13584; }
+    .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+    .social-icons a:hover .fa-x { color: #333333; }
+    .social-icons a:hover .fa-linkedin { color: #005582; }
+
+    footer {
+        padding: 20px;
+        text-align: center;
+        background-color: var(--dark-bg);
+        font-size: 0.9em;
+        line-height: 1.6;
+    }
+
+    /* Desktop styles */
+    @media (min-width: 768px) {
+        .three-section {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .header1,
+        .contact-details,
+        .social-icons {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        
+        .input-group {
+            flex-direction: row;
+        }
+        
+        .input-group input {
+            width: 250px;
+        }
+        
+        .header1 {
+            flex-direction: row;
+            text-align: left;
+            align-items: flex-start;
+        }
+        
+        .logo {
+            margin-left: 20px;
+            margin-top: 0;
+        }
+        
+        .contact-details h2,
+        .social-icons h2 {
+            text-align: left;
+        }
+        
+        .social-icons {
+            align-items: flex-start;
+        }
+        
+        .social-icons-container {
+            justify-content: flex-start;
+        }
+    }
+    </style>
+</head>
+<body>
+<header class="header_h">
+    <img class="logo_h" src="logo.png" alt="School Logo" />
+    <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="newhome.html">Home</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="admissionnew.html">Admissions</a></li>
+      <li class="dropdown">
+        <a href="#">Facility</a>
+        <div class="sidebar">
+          <a href="lab.html">Laboratories</a>
+          <a href="library.html">Library</a>
+          <a href="hostel.html">Hostel</a>
+          <a href="trasport.html">Transport</a>
+          <a href="sports.html">Sports</a>
+          <a href="canteen.html">Food Court</a>
+          <a href="safty.html">Student Safety</a>
+        </div>
+      </li>
+      <li><a href="event.html">School Events</a></li>
+      <li><a href="Faculty.html">Faculty</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+  </nav>
+  
+
+    <section id="transportation" class="transportation-section">
+        
+        
+            <div class="sub-section">
+                <h3>Long Distance Travel</h3>
+                <div class="card-container">
+                    <div class="card">
+                        <i class="fas fa-satellite-dish transport-icon icon"></i>
+                        <h3>GPS Tracking</h3>
+                        <p>Real-time location monitoring for schedule adherence</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-video transport-icon icon"></i>
+                        <h3>CCTV Cameras</h3>
+                        <p>24/7 surveillance for passenger safety</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-tachometer-alt transport-icon icon"></i>
+                        <h3>Speed Governors</h3>
+                        <p>Ensuring safe driving speeds at all times</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-tools transport-icon icon"></i>
+                        <h3>Regular Maintenance</h3>
+                        <p>Daily vehicle checks and scheduled servicing</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-couch transport-icon icon"></i>
+                        <h3>Comfort Seating</h3>
+                        <p>Ergonomic seats with ample legroom</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-wifi transport-icon icon"></i>
+                        <h3>Onboard Amenities</h3>
+                        <p>Wi-Fi, charging ports & climate control</p>
+                    </div>
+                </div>
+        </div>
+        <div class="sub-section">
+            <h3>Short Distance Travel</h3>
+            <div class="card-container">
+                <div class="card">
+                    <i class="fas fa-map-marked-alt transport-icon icon"></i>
+                    <h3>GPS Enabled</h3>
+                    <p>Accurate route tracking for quick arrivals</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt transport-icon icon"></i>
+                    <h3>Safety Features</h3>
+                    <p>Airbags, seatbelts & emergency buttons</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-taxi transport-icon icon"></i>
+                    <h3>Cab Services</h3>
+                    <p>24/7 available with professional drivers</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h3>Bus Allotment</h3>
+            <div class="card-container">
+                <div class="card">
+                    <i class="fas fa-users transport-icon icon"></i>
+                    <h3>Demand-Based</h3>
+                    <p>Dynamic allocation matching passenger needs</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-route transport-icon icon"></i>
+                    <h3>Route Optimization</h3>
+                    <p>Smart routing for efficient transfers</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h3>Security Measures</h3>
+            <div class="card-container">
+                <div class="card">
+                    <i class="fas fa-map-pin transport-icon icon"></i>
+                    <h3>Live Tracking</h3>
+                    <p>Real-time monitoring of all vehicles</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-exclamation-triangle transport-icon icon"></i>
+                    <h3>Emergency Response</h3>
+                    <p>Instant support system activation</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-id-badge transport-icon icon"></i>
+                    <h3>Verified Staff</h3>
+                    <p>Background-checked professional drivers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="containera">
+      <!-- Top header: Newsletter centered -->
+      <div class="top-header">
+        <div class="newsletter-container">
+          <h2>Subscribe</h2>
+          <!-- Display subscription message if exists -->
+          <?php if($message): ?>
+            <p><?php echo $message; ?></p>
+          <?php endif; ?>
+          <!-- Newsletter form with method, action, and onsubmit attribute -->
+          <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+            <label for="newsletter-email" hidden>Your Email:</label>
+            <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Three sections: Header, Quick Links, Contact Details -->
+      <div class="three-section">
+        <div class="header1">
+          <p>APJ Abdul Kalam Higher Primary School.<br>
+          Channagiri - 577213</p>
+          <img class="logo" src="img/logo.png" alt="Logo">
+        </div>
+  
+        <div class="social-icons">
+          <h2>FOLLOW US ON</h2>
+          <div class="social-icons-container">
+            <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+            <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-details">
+          <h2>Contact Details</h2>
+          <address class="address">
+            <strong>Address:</strong><br>
+            Opposite of Forest Office, NH_13<br>
+            Channagiri - 577213
+          </address>
+          <div class="contact-number">
+            <strong>Contact Number:</strong><br>
+            +91 9880231572 | +91 9008390323
+          </div>
+          <div class="email">
+            <strong>Email:</strong> apjschool@gmail.com
+          </div>
+        </div>
+      </div>
+  
+      <!-- Footer -->
+      <footer>
+        <p>
+        APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.<br>
+        Channagiri (T), Davanagere (D)</p>
+      </footer>
+    </div>
+    <script>
+      function validateEmailJS() {
+        const emailInput = document.getElementById("newsletter-email");
+        const email = emailInput.value.trim();
+        // Simple email regex validation
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!re.test(email)) {
+          alert("Please enter a valid email address.");
+          return false;
+        }
+        return true;
+      }
+   
+    // Fixed Smooth Scroll Implementation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get header height for proper offset
+        const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 100;
+
+        // Smooth scroll for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL hash after scroll
+                    setTimeout(() => {
+                        history.replaceState(null, null, targetId);
+                    }, 1000);
+                }
+            });
+        });
+
+        // Intersection Observer for card animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(card);
+        });
+    });
+</script>
+</body>
+</html>

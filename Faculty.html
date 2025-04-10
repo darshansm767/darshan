@@ -1,0 +1,1033 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APJ Abdul Kalam School Faculty</title>
+    <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2A5C82;    /* Royal Blue */
+            --secondary: #6A8A82;  /* Mango Orange */
+            --accent: #D4AF37;    /* Gold */
+            --text-dark: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .faculty-container {
+            max-width: 1500px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .page-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+        }
+
+        .faculty-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            border-left: 6px solid var(--primary);
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .faculty-img-container {
+            flex-shrink: 0;
+            position: relative;
+            margin-right: 2rem;
+        }
+
+        .faculty-img {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .faculty-card:hover .faculty-img {
+            transform: scale(1.03);
+        }
+
+        .faculty-details {
+            flex: 1;
+        }
+
+        .faculty-name {
+            color: var(--primary);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .faculty-subject {
+            color: var(--secondary);
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 500;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 1rem 0;
+            color: var(--text-dark);
+            gap: 1rem;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+        }
+
+        .detail-item i {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+
+        .detail-text {
+            flex: 1;
+        }
+
+        /* Responsive Grid Layout */
+        @media (min-width: 768px) {
+            .faculty-container {
+                grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            }
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+            .faculty-img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .faculty-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem 1rem;
+            }
+
+            .faculty-img-container {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+
+            .faculty-img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .faculty-subject {
+                justify-content: center;
+            }
+
+            .detail-item {
+                text-align: left;
+            }
+        }
+
+        /* Small Mobile Styles */
+        @media (max-width: 480px) {
+            .faculty-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .faculty-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .detail-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .faculty-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .faculty-card:nth-child(2) { animation-delay: 0.1s; }
+        .faculty-card:nth-child(3) { animation-delay: 0.2s; }
+        .faculty-card:nth-child(4) { animation-delay: 0.3s; }
+        .faculty-card:nth-child(5) { animation-delay: 0.4s; }
+        .faculty-card:nth-child(6) { animation-delay: 0.5s; }
+        .faculty-card:nth-child(7) { animation-delay: 0.6s; }
+        .faculty-card:nth-child(8) { animation-delay: 0.7s; }
+        .faculty-card:nth-child(9) { animation-delay: 0.8s; }
+        .faculty-card:nth-child(10) { animation-delay: 0.9s; }
+
+        /* Loading State */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+        }
+
+        .loading.active {
+            display: block;
+        }
+        :root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--dark-bg);
+      margin: 0;
+    }
+
+    .header_h {
+      background-color: var(--dark-bg);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .header_h h1 {
+      color: white;
+      text-align: center;
+    }
+
+    .header_h img.logo_h {
+      width: 80px;
+      height: auto;
+      margin-right: 1rem;
+    }
+
+    nav {
+      background-color: var(--dark-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      position: relative;
+      margin:20px;
+      
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 12px 14px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    /* Dropdown styles */
+    .dropdown .sidebar {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-bg);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      z-index: 1001;
+      flex-direction: column;
+    }
+
+    .dropdown:hover .sidebar {
+      display: flex;
+    }
+
+    .sidebar a {
+      color: white;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Responsive Header */
+    @media (max-width: 768px) {
+      .header_h {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      .header_h img.logo_h {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 60px;
+      }
+
+      .header_h h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      nav li{
+        margin:0px;
+        
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header_h h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+      }
+    }
+    :root {
+    --text-color: #333333;
+    --dark-bg: #2A5C82;
+    --secondary-color: #6A8A82;
+    --accent-color: #D4AF37;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  h1 { font-size: 2.8rem; color: var(--dark-bg); }
+  h2 { font-size: 2.2rem; color: var(--dark-bg); }
+  h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+  .containera {
+      width: 100%;
+      margin: 0;
+      color: white;
+      background-color: var(--dark-bg);
+  }
+  .top-header {
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+  }
+  .newsletter-container {
+      display: inline-block;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  .newsletter-container h2{
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+  }
+  .input-group input {
+      padding: 12px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+  .input-group button {
+      padding: 12px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+  }
+  .input-group button:hover {
+      background-color: #c19a2f;
+  }
+  .three-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+  }
+  .header1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0;
+  }
+  .header1 p {
+    background-color: #2A5C82;
+      color: rgb(255, 255, 255);
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      padding: 0;
+  }
+  .logo {
+      width: 130px;
+      height: auto;
+      margin: 0 auto;
+  }
+
+  .contact-details h2,
+  .social-icons h2 {
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .contact-details {
+      text-align: center;
+      padding: 20px 0;
+  }
+
+  .contact-details address,
+  .contact-details .contact-number,
+  .contact-details .email {
+      margin-bottom: 15px;
+      line-height: 1.6;
+  }
+
+  .social-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+  }
+
+  .social-icons-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+  }
+
+  .social-icons a {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+  }
+
+  .social-icons a:hover {
+      transform: translateY(-3px);
+  }
+  .social-icons .fa-instagram { color: #e1306c; }
+  .social-icons .fa-whatsapp { color: #25d366; }
+  .social-icons .fa-x { color: #000000; }
+  .social-icons .fa-linkedin { color: #0077b5; }
+  .social-icons a:hover .fa-instagram { color: #c13584; }
+  .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+  .social-icons a:hover .fa-x { color: #333333; }
+  .social-icons a:hover .fa-linkedin { color: #005582; }
+
+  footer {
+      padding: 20px;
+      text-align: center;
+      background-color: var(--dark-bg);
+      font-size: 0.9em;
+      line-height: 1.6;
+  }
+  footer p{
+    background-color: #2A5C82;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+      .three-section {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+      }
+      
+      .header1,
+      .contact-details,
+      .social-icons {
+          flex: 1;
+          min-width: 300px;
+          max-width: 400px;
+      }
+      
+      .input-group {
+          flex-direction: row;
+      }
+      
+      .input-group input {
+          width: 250px;
+      }
+      
+      .header1 {
+          flex-direction: row;
+          text-align: left;
+          align-items: flex-start;
+      }
+      
+      .logo {
+          margin-left: 20px;
+          margin-top: 0;
+      }
+      
+      .contact-details h2,
+      .social-icons h2 {
+          text-align: left;
+      }
+      
+      .social-icons {
+          align-items: flex-start;
+      }
+      
+      .social-icons-container {
+          justify-content: flex-start;
+      }
+  }
+    </style>
+</head>
+<body>
+<header class="header_h">
+    <img class="logo_h" src="logo.png" alt="School Logo" />
+    <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="newhome.html">Home</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="admissionnew.html">Admissions</a></li>
+      <li class="dropdown">
+        <a href="#">Facility</a>
+        <div class="sidebar">
+          <a href="lab.html">Laboratories</a>
+          <a href="library.html">Library</a>
+          <a href="hostel.html">Hostel</a>
+          <a href="trasport.html">Transport</a>
+          <a href="sports.html">Sports</a>
+          <a href="canteen.html">Food Court</a>
+          <a href="safty.html">Student Safety</a>
+        </div>
+      </li>
+      <li><a href="event.html">School Events</a></li>
+      <li><a href="Faculty.html">Faculty</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+  </nav>
+
+    <div class="faculty-container">
+        <div class="page-header">
+            <h1>Our Distinguished Faculty</h1>
+            <p>Meet our team of experienced educators who are dedicated to nurturing young minds and shaping futures with their expertise and passion for teaching.</p>
+        </div>
+
+        <!-- Teacher 1 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t2.jpg" alt="Mrs. Anjali Sharma" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mrs. Anjali Sharma</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-calculator"></i>
+                    Mathematics (Class 6-10)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">M.Sc (Mathematics), B.Ed - Delhi University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">12+ years experience in CBSE curriculum</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-award"></i>
+                    <span class="detail-text">State Best Teacher Award 2019</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 2 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t1.jpg" alt="Mr. Rajesh Patel" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mr. Rajesh Patel</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-book-open"></i>
+                    English Literature (Class 9-12)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">MA (English), B.Ed - University of Mumbai</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">ICSE curriculum specialist with 15 years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-theater-masks"></i>
+                    <span class="detail-text">School Drama Club Incharge</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 3 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t4.jpg" alt="Ms. Priya Singh" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Ms. Priya Singh</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-atom"></i>
+                    Science (Physics & Chemistry)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">M.Sc (Physics), B.Ed - Banaras Hindu University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">NTSE/NSEJS mentor with 8+ years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-flask"></i>
+                    <span class="detail-text">Science Lab Coordinator</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 4 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t3.jpg" alt="Mrs. Sunita Reddy" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mrs. Sunita Reddy</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-globe-asia"></i>
+                    Social Studies (Class 6-8)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">MA (History), B.Ed - Osmania University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">State Board expert with 10 years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-landmark"></i>
+                    <span class="detail-text">Heritage Club Coordinator</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 5 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t8.jpg" alt="Mr. Rajesh Kumar" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mr. Rajesh Kumar</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-calculator"></i>
+                    Mathematics (Class 9-10)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">MSc (Mathematics), B.Ed - Delhi University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">CBSE Board specialist with 12 years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <span class="detail-text">Coding Club Mentor</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 6 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t5.jpg" alt="Ms. Anjali Sharma" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Ms. Anjali Sharma</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-flask"></i>
+                    Science (Class 6-8)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">BSc (Biology), B.Ed - Mumbai University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">ICSE Board expert with 8 years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-leaf"></i>
+                    <span class="detail-text">Eco Club Incharge</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 7 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t7.jpg" alt="Mr. David Fernandes" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mr. David Fernandes</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-book-open"></i>
+                    English Literature (Class 11-12)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">MA (English), B.Ed - Bangalore University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">State Board specialist with 15 years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-pen-nib"></i>
+                    <span class="detail-text">Literary Club Coordinator</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 8 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t6.jpg" alt="Mrs. Priya Patel" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mrs. Priya Patel</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-palette"></i>
+                    Art and Craft (Primary)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">BFA (Fine Arts), Diploma in Education - Gujarat University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">Primary education specialist with 7 years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-brush"></i>
+                    <span class="detail-text">Art Exhibition Organizer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 9 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t9.jpg" alt="Mr. Sanjay Singh" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mr. Sanjay Singh</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-running"></i>
+                    Physical Education (All Grades)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">BPEd (Physical Education) - Punjab University</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">Sports and fitness coach with 11 years experience</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-trophy"></i>
+                    <span class="detail-text">Sports Team Coach</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher 10 -->
+        <div class="faculty-card">
+            <div class="faculty-img-container">
+                <img src="t10.jpg" alt="Mr. Amit Kumar" class="faculty-img" loading="lazy">
+            </div>
+            <div class="faculty-details">
+                <h2 class="faculty-name">Mr. Amit Kumar</h2>
+                <p class="faculty-subject">
+                    <i class="fas fa-music"></i>
+                    Music & Arts (Primary Classes)
+                </p>
+                <div class="detail-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="detail-text">Sangeet Visharad, BPA - Prayag Sangeet Samiti</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-school"></i>
+                    <span class="detail-text">Indian classical music specialist</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-dharmachakra"></i>
+                    <span class="detail-text">School Cultural Program Coordinator</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containera">
+    <!-- Top header: Newsletter centered -->
+    <div class="top-header">
+      <div class="newsletter-container">
+        <h2>Subscribe</h2>
+        <!-- Display subscription message if exists -->
+        <?php if($message): ?>
+          <p><?php echo $message; ?></p>
+        <?php endif; ?>
+        <!-- Newsletter form with method, action, and onsubmit attribute -->
+        <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+          <label for="newsletter-email" hidden>Your Email:</label>
+          <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Three sections: Header, Quick Links, Contact Details -->
+    <div class="three-section">
+      <div class="header1">
+        <p>APJ Abdul Kalam Higher Primary School.<br>
+        Channagiri - 577213</p>
+        <img class="logo" src="logo.png" alt="Logo">
+      </div>
+
+      <div class="social-icons">
+        <h2>FOLLOW US ON</h2>
+        <div class="social-icons-container">
+          <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-details">
+        <h2>Contact Details</h2>
+        <address class="address">
+          <strong>Address:</strong><br>
+          Opposite of Forest Office, NH_13<br>
+          Channagiri - 577213
+        </address>
+        <div class="contact-number">
+          <strong>Contact Number:</strong><br>
+          +91 9880231572 | +91 9008390323
+        </div>
+        <div class="email">
+          <strong>Email:</strong> apjschool@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+      APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.<br>
+      Channagiri (T), Davanagere (D)</p>
+    </footer>
+  </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lazy loading for images
+            if ('loading' in HTMLImageElement.prototype) {
+                const images = document.querySelectorAll('img[loading="lazy"]');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                });
+            } else {
+                // Fallback for browsers that don't support native lazy loading
+                const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
+                
+                if ('IntersectionObserver' in window) {
+                    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                let lazyImage = entry.target;
+                                lazyImage.src = lazyImage.dataset.src;
+                                lazyImageObserver.unobserve(lazyImage);
+                            }
+                        });
+                    });
+
+                    lazyImages.forEach(function(lazyImage) {
+                        lazyImageObserver.observe(lazyImage);
+                    });
+                }
+            }
+
+            // Add animation class when cards come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.faculty-card').forEach(card => {
+                observer.observe(card);
+                card.style.animationPlayState = 'paused';
+            });
+        });
+   
+    function validateEmailJS() {
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+      // Simple email regex validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

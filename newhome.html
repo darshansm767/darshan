@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APJ Abdul Kalam Higher Primary School - Channagiri</title>
+  <!-- Using single version of Font Awesome -->
+  <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2A5C82; 
+      --accent-color: #D4AF37;
+      --secondary-color: #6A8A82;
+      --text-color: #333333;
+      --light-bg: #f8f9fa;
+      --dark-bg: #2A5C82;
+    }
+
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      background: var(--light-bg);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--dark-bg);
+      margin: 1.5rem 0;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--accent-color);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--dark-bg);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin: 1rem 0;
+    }
+
+    main {
+      text-align: center;
+      margin-left:20%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    dl {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    dl li {
+      padding: 0.8rem 0;
+      position: relative;
+      font-size: 1.1rem;
+      text-align: left;
+      padding-left: 2rem;
+    }
+
+    dl li::before {
+      content: "•";
+      color: var(--accent-color);
+      position: absolute;
+      left: 1rem;
+      font-size: 1.5rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      margin: 1rem 0;
+      display: block;
+    }
+
+    p {
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 2rem 0;
+      background: #f9f9f9;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      overflow: hidden;
+    }
+
+    .owl-service-item {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      flex: 0 0 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      margin: 0 0.5rem;
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .carousel-btn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-btn.prev {
+      left: 0;
+    }
+
+    .carousel-btn.next {
+      right: 0;
+    }
+
+    .carousel-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: translateY(-50%);
+      opacity: 0.5;
+    }
+
+    /* Features Section */
+    .container2 {
+      padding: 2rem 1rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0 auto;
+    }
+
+    .feature {
+      text-align: center;
+      width: 100%;
+      max-width: 250px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .icon-academic { color: #e63946; }
+    .icon-student { color: #1d3557; }
+    .icon-teaching { color: #e63946; }
+    .icon-activities { color: #1d3557; }
+
+    /* Responsive Adjustments */
+    @media (min-width: 576px) {
+      .carousel-item {
+        flex: 0 0 50%;
+      }
+      
+      .feature {
+        width: calc(50% - 1rem);
+      }
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      h2 {
+        font-size: 2.2rem;
+      }
+      
+      .carousel-item {
+        flex: 0 0 33.33%;
+      }
+      
+      .feature {
+        width: calc(25% - 1.5rem);
+      }
+      
+      .carousel-btn {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      main {
+        padding: 2rem;
+      }
+      
+      .carousel-container {
+        padding: 0 4rem;
+      }
+      
+      .service-card {
+        padding: 2.5rem;
+      }
+    }
+
+    /* Accessibility Improvements */
+    a:focus, button:focus {
+      outline: 3px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+
+    /* Image Container */
+    .image-container {
+      padding: 0 1rem;
+    }
+
+    :root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--dark-bg);
+      margin: 0;
+    }
+
+    .header_h {
+      background-color: var(--dark-bg);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .header_h h1 {
+      color: white;
+      text-align: center;
+    }
+
+    .header_h img.logo_h {
+      width: 80px;
+      height: auto;
+      margin-right: 1rem;
+    }
+
+    nav {
+      background-color: var(--dark-bg);
+      position:relative;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      position: relative;
+      margin: 0 20px; 
+      
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 12px 14px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    /* Dropdown styles */
+    .dropdown .sidebar {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-bg);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      z-index: 1001;
+      flex-direction: column;
+    }
+
+    .dropdown:hover .sidebar {
+      display: flex;
+    }
+
+    .sidebar a {
+      color: white;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Responsive Header */
+    @media (max-width: 768px) {
+      .header_h {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      .header_h img.logo_h {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 60px;
+      }
+
+      .header_h h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      nav li{
+        margin:0px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header_h h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+      }
+    }
+
+    :root {
+    --text-color: #333333;
+    --dark-bg: #2A5C82;
+    --secondary-color: #6A8A82;
+    --accent-color: #D4AF37;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  h1 { font-size: 2.8rem; color: var(--dark-bg); }
+  h2 { font-size: 2.2rem; color: var(--dark-bg); }
+  h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+  .containera {
+      width: 100%;
+      margin: 0;
+      color: white;
+      background-color: var(--dark-bg);
+  }
+  .top-header {
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+  }
+  .newsletter-container {
+      display: inline-block;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  .newsletter-container h2{
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+  }
+  .input-group input {
+      padding: 12px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+  .input-group button {
+      padding: 12px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+  }
+  .input-group button:hover {
+      background-color: #c19a2f;
+  }
+  .three-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+  }
+  .header1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0;
+  }
+  .header1 p {
+    background-color: #2A5C82;
+      color: rgb(255, 255, 255);
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      padding: 0;
+  }
+  .logo {
+      width: 130px;
+      height: auto;
+      margin: 0 auto;
+  }
+
+  .contact-details h2,
+  .social-icons h2 {
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .contact-details {
+      text-align: center;
+      padding: 20px 0;
+  }
+
+  .contact-details address,
+  .contact-details .contact-number,
+  .contact-details .email {
+      margin-bottom: 15px;
+      line-height: 1.6;
+  }
+
+  .social-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+  }
+
+  .social-icons-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+  }
+
+  .social-icons a {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+  }
+
+  .social-icons a:hover {
+      transform: translateY(-3px);
+  }
+  .social-icons .fa-instagram { color: #e1306c; }
+  .social-icons .fa-whatsapp { color: #25d366; }
+  .social-icons .fa-x { color: #000000; }
+  .social-icons .fa-linkedin { color: #0077b5; }
+  .social-icons a:hover .fa-instagram { color: #c13584; }
+  .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+  .social-icons a:hover .fa-x { color: #333333; }
+  .social-icons a:hover .fa-linkedin { color: #005582; }
+
+  footer {
+      padding: 20px;
+      text-align: center;
+      background-color: var(--dark-bg);
+      font-size: 0.9em;
+      line-height: 1.6;
+  }
+  footer p{
+    background-color: #2A5C82;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+      .three-section {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+      }
+      
+      .header1,
+      .contact-details,
+      .social-icons {
+          flex: 1;
+          min-width: 300px;
+          max-width: 400px;
+      }
+      
+      .input-group {
+          flex-direction: row;
+      }
+      
+      .input-group input {
+          width: 250px;
+      }
+      
+      .header1 {
+          flex-direction: row;
+          text-align: left;
+          align-items: flex-start;
+      }
+      
+      .logo {
+          margin-left: 20px;
+          margin-top: 0;
+      }
+      
+      .contact-details h2,
+      .social-icons h2 {
+          text-align: left;
+      }
+      
+      .social-icons {
+          align-items: flex-start;
+      }
+      
+      .social-icons-container {
+          justify-content: flex-start;
+      }
+  }
+
+    
+  </style>
+</head>
+<body>
+<header class="header_h">
+    <img class="logo_h" src="logo.png" alt="School Logo" />
+    <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="newhome.html">Home</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="admissionnew.html">Admissions</a></li>
+      <li class="dropdown">
+        <a href="#">Facility</a>
+        <div class="sidebar">
+          <a href="lab.html">Laboratories</a>
+          <a href="library.html">Library</a>
+          <a href="hostel.html">Hostel</a>
+          <a href="trasport.html">Transport</a>
+          <a href="sports.html">Sports</a>
+          <a href="canteen.html">Food Court</a>
+          <a href="safty.html">Student Safety</a>
+        </div>
+      </li>
+      <li><a href="event.html">School Events</a></li>
+      <li><a href="Faculty.html">Faculty</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <div class="image-container">
+    <img src="school-campus.webp" alt="APJ Abdul Kalam Higher Primary School Campus">
+  </div>
+  <center>
+
+  <main>
+    <h1>Welcome to Our School</h1>
+    <h3>We significantly focus on</h3>
+    <dl>
+      <li>Personalized Learning</li>
+      <li>Innovative Curriculum</li>
+      <li>Holistic Development</li>
+      <li>Experienced Educators</li>
+      <li>Strong Community Partnerships</li>
+      <li>Focus on Values</li>
+    </dl>
+  </main>
+</center>
+
+  <p>Welcome to APJ Abdul Kalam Higher Primary School-Channagiri, where we nurture young minds to dream big and achieve excellence. Named in honor of the visionary leader and scientist Dr. A.P.J. Abdul Kalam, our school is dedicated to inspiring students with the same passion for learning, innovation, and service that defined his legacy.</p>
+
+  <section class="services">
+    <div class="carousel-container">
+      <button class="carousel-btn prev" aria-label="Previous slide" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-btn next" aria-label="Next slide" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="owl-service-item" id="carousel">
+        <!-- Carousel items -->
+        <div class="carousel-item">
+          <div class="service-card">
+            <i class="fas fa-graduation-cap service-icon" aria-hidden="true"></i>
+            <h4>Best Education</h4>
+            <p>Empowering young minds with holistic learning experiences that foster academic excellence, creativity, and character development.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="service-card">
+            <i class="fas fa-chalkboard-teacher service-icon" aria-hidden="true"></i>
+            <h4>Best Teachers</h4>
+            <p>Dedicated educators who inspire, motivate, and guide students to reach their full potential with patience, passion, and personalized attention.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="service-card">
+            <i class="fas fa-users service-icon" aria-hidden="true"></i>
+            <h4>Best Students</h4>
+            <p>Curious, enthusiastic, and dedicated learners who embody the values of perseverance, teamwork, and creativity, striving for excellence in all pursuits.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="service-card">
+            <i class="fas fa-video service-icon" aria-hidden="true"></i>
+            <h4>Online Meeting</h4>
+            <p>Seamless virtual connections that bring students, teachers, and parents together, facilitating collaborative learning, open communication, and community building.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="service-card">
+            <i class="fas fa-network-wired service-icon" aria-hidden="true"></i>
+            <h4>Best Networking</h4>
+            <p>Nurturing a supportive ecosystem of educators, alumni, and industry experts that provides students with valuable mentorship, internship, and career opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container2">
+    <h2>Why Dr. APJ Abdul Kalam Higher Primary School?</h2>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-graduation-cap icon-academic" aria-hidden="true"></i>
+        <p>Strong Academic System</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-hands-helping icon-student" aria-hidden="true"></i>
+        <p>Empowering Student Life</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-chalkboard-teacher icon-teaching" aria-hidden="true"></i>
+        <p>Modern Teaching Methods</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-running icon-activities" aria-hidden="true"></i>
+        <p>Wide Range of Activities</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="containera">
+    <!-- Top header: Newsletter centered -->
+    <div class="top-header">
+      <div class="newsletter-container">
+        <h2>Subscribe</h2>
+        <!-- Display subscription message if exists -->
+         <!-- Newsletter form with method, action, and onsubmit attribute -->
+        <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+          <label for="newsletter-email" hidden>Your Email:</label>
+          <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Three sections: Header, Quick Links, Contact Details -->
+    <div class="three-section">
+      <div class="header1">
+        <p>APJ Abdul Kalam Higher Primary School.<br>
+        Channagiri - 577213</p>
+        <img class="logo" src="logo.png" alt="Logo">
+      </div>
+
+      <div class="social-icons">
+        <h2>FOLLOW US ON</h2>
+        <div class="social-icons-container">
+          <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-details">
+        <h2>Contact Details</h2>
+        <address class="address">
+          <strong>Address:</strong><br>
+          Opposite of Forest Office, NH_13<br>
+          Channagiri - 577213
+        </address>
+        <div class="contact-number">
+          <strong>Contact Number:</strong><br>
+          +91 9880231572 | +91 9008390323
+        </div>
+        <div class="email">
+          <strong>Email:</strong> apjschool@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+      APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.<br>
+      Channagiri (T), Davanagere (D)</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let currentIndex = 0;
+      const carousel = document.getElementById('carousel');
+      const items = document.querySelectorAll('.carousel-item');
+      const totalItems = items.length;
+      
+      // Initialize carousel
+      updateCarousel();
+      updateButtons();
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        updateCarousel();
+        updateButtons();
+      });
+      
+      function getVisibleItems() {
+        if (window.innerWidth < 576) return 1;
+        if (window.innerWidth < 768) return 2;
+        return 3;
+      }
+      
+      function updateCarousel() {
+        const visibleItems = getVisibleItems();
+        currentIndex = Math.min(currentIndex, Math.max(0, totalItems - visibleItems));
+        const itemWidth = 100 / visibleItems;
+        carousel.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
+      }
+      
+      function updateButtons() {
+        const visibleItems = getVisibleItems();
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= totalItems - visibleItems;
+      }
+      
+      window.moveSlide = function(direction) {
+        const visibleItems = getVisibleItems();
+        currentIndex = Math.max(0, Math.min(currentIndex + direction, totalItems - visibleItems));
+        const itemWidth = 100 / visibleItems;
+        carousel.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
+        updateButtons();
+      }
+      
+      // Add keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+          moveSlide(-1);
+        } else if (e.key === 'ArrowRight') {
+          moveSlide(1);
+        }
+      });
+      
+      // Add swipe support for touch devices
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      carousel.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, {passive: true});
+      
+      carousel.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, {passive: true});
+      
+      function handleSwipe() {
+        const threshold = 50;
+        if (touchStartX - touchEndX > threshold) {
+          moveSlide(1); // Swipe left
+        } else if (touchEndX - touchStartX > threshold) {
+          moveSlide(-1); // Swipe right
+        }
+      }
+    });
+  
+    function validateEmailJS() {
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+      // Simple email regex validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+  
+</body>
+</html>

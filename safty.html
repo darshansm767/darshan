@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Safety - APJ Abdul Kalam Higher Primary School</title>
+    <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0d47a1;
+            --accent-color: #e53935;
+            --background-color: #f8f9fa;
+            --text-color: #2d3436;
+            --dark-bg: #2A5C82;
+            --secondary-color: #6A8A82;
+            --accent-color: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s all ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 2rem 0;
+            color: var(--primary-color);
+        }
+
+        .emergency-header {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .emergency-header i {
+            font-size: 1.2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-box {
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .feature-box i {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .policy-links {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+
+        .policy-links h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .policy-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .policy-links a i {
+            margin-left: 5px;
+        }
+
+        .policy-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header Styles */
+        .header_h {
+            background-color: var(--dark-bg);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .header_h h1 {
+            color: white;
+            text-align: center;
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .header_h img.logo_h {
+            width: 80px;
+            height: auto;
+            margin-right: 1rem;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: var(--dark-bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 12px 14px;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Dropdown styles */
+        .dropdown .sidebar {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--dark-bg);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 180px;
+            z-index: 1001;
+            flex-direction: column;
+        }
+
+        .dropdown:hover .sidebar {
+            display: flex;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 10px 14px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Footer Styles */
+        .containera {
+            width: 100%;
+            margin: 0;
+            color: white;
+            background-color: var(--dark-bg);
+        }
+
+        .top-header {
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .newsletter-container {
+            display: inline-block;
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-container h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .input-group input {
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .input-group button {
+            padding: 12px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .input-group button:hover {
+            background-color: #c19a2f;
+        }
+
+        .three-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header1 p {
+            color: rgb(255, 255, 255);
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            padding: 0;
+        }
+
+        .logo {
+            width: 130px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .contact-details h2,
+        .social-icons h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .contact-details {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .contact-details address,
+        .contact-details .contact-number,
+        .contact-details .email {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .social-icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            font-size: 28px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-icons .fa-instagram { color: #e1306c; }
+        .social-icons .fa-whatsapp { color: #25d366; }
+        .social-icons .fa-x { color: #000000; }
+        .social-icons .fa-linkedin { color: #0077b5; }
+        .social-icons a:hover .fa-instagram { color: #c13584; }
+        .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+        .social-icons a:hover .fa-x { color: #333333; }
+        .social-icons a:hover .fa-linkedin { color: #005582; }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--dark-bg);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .header_h {
+                flex-direction: column;
+                text-align: center;
+                padding: 0.5rem;
+            }
+
+            .header_h img.logo_h {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+                width: 60px;
+            }
+
+            .header_h h1 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            nav li {
+                margin: 0;
+            }
+
+            .emergency-header {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .policy-links a {
+                display: block;
+                margin: 0.5rem 0;
+                white-space: normal;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .three-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .header1,
+            .contact-details,
+            .social-icons {
+                flex: 1;
+                min-width: 300px;
+                max-width: 400px;
+            }
+
+            .input-group {
+                flex-direction: row;
+            }
+
+            .input-group input {
+                width: 250px;
+            }
+
+            .header1 {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            .logo {
+                margin-left: 20px;
+                margin-top: 0;
+            }
+
+            .contact-details h2,
+            .social-icons h2 {
+                text-align: left;
+            }
+
+            .social-icons {
+                align-items: flex-start;
+            }
+
+            .social-icons-container {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header_h h1 {
+                font-size: 1.2rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+                padding: 8px 10px;
+            }
+
+            .emergency-header {
+                font-size: 0.8rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-container h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header_h">
+        <img class="logo_h" src="logo.png" alt="School Logo" />
+        <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="newhome.html">Home</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="Academics.html">Academics</a></li>
+        <li><a href="admissionnew.html">Admissions</a></li>
+        <li class="dropdown">
+          <a href="#">Facility</a>
+          <div class="sidebar">
+            <a href="lab.html">Laboratories</a>
+            <a href="library.html">Library</a>
+            <a href="hostel.html">Hostel</a>
+            <a href="trasport.html">Transport</a>
+            <a href="sports.html">Sports</a>
+            <a href="canteen.html">Food Court</a>
+            <a href="safty.html">Student Safety</a>
+          </div>
+        </li>
+        <li><a href="event.html">School Events</a></li>
+        <li><a href="Faculty.html">Faculty</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <div class="emergency-header">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Emergency Contacts: Hostel Warden (XXX-XXX-XXXX) | Security Control Room (XXX-XXX-XXXX) | Medical Emergency (108)</span>
+    </div>
+
+    <div class="container">
+        <h1>Comprehensive Safety Measures at Our School</h1>
+
+        <section id="security">
+            <h2><i class="fas fa-lock"></i> Security Infrastructure</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <i class="fas fa-video"></i>
+                    <h3>Smart Surveillance</h3>
+                    <p>24/7 monitored CCTV system with cameras covering all common areas, entry/exit points, and corridors</p>
+                    <div class="policy-links">
+                        <a href="#cctv-policy">View CCTV Policy <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Trained Security Staff</h3>
+                    <p>Professional security personnel with background verification and regular training</p>
+                    <div class="policy-links">
+                        <a href="#security-staff">Meet Our Team <i class="fas fa-users"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Access Control</h3>
+                    <p>Mandatory ID cards for all students and staff with biometric entry at main gates</p>
+                    <div class="policy-links">
+                        <a href="#id-policy">ID Card Policy <i class="fas fa-file-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="anti-ragging">
+            <h2><i class="fas fa-ban"></i> Anti-Ragging Initiative</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>24/7 Helpline</h3>
+                    <p>Immediate response anti-ragging helpline with anonymous reporting options</p>
+                    <div class="policy-links">
+                        <a href="tel:18001805522">Call National Anti-Ragging Helpline</a>
+                        <a href="#report-form">Submit Anonymous Report</a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Mentorship Program</h3>
+                    <p>Senior student mentors for all new students to ensure smooth transition</p>
+                    <div class="policy-links">
+                        <a href="#mentor-program">Learn About Mentorship <i class="fas fa-info-circle"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Zero Tolerance Policy</h3>
+                    <p>Strict disciplinary action against any form of ragging or bullying</p>
+                    <div class="policy-links">
+                        <a href="#anti-ragging-policy">Read Full Policy <i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fire-safety">
+            <h2><i class="fas fa-fire-extinguisher"></i> Fire Safety Measures</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <i class="fas fa-siren-on"></i>
+                    <h3>Fire Detection System</h3>
+                    <p>Advanced smoke detectors and fire alarms installed in all rooms and common areas</p>
+                    <div class="policy-links">
+                        <a href="#fire-drill-schedule">View Monthly Fire Drill Schedule <i class="fas fa-calendar-alt"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-signs"></i>
+                    <h3>Emergency Exits</h3>
+                    <p>Clearly marked emergency exits with illuminated signage and unobstructed pathways</p>
+                    <div class="policy-links">
+                        <a href="#evacuation-map">Download Evacuation Map (PDF) <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-training"></i>
+                    <h3>Safety Training</h3>
+                    <p>Mandatory fire safety training for all students with quarterly refresher courses</p>
+                    <div class="policy-links">
+                        <a href="#training-videos">Watch Safety Tutorials <i class="fas fa-video"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support">
+            <h2><i class="fas fa-hands-helping"></i> Student Support Services</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <i class="fas fa-comments"></i>
+                    <h3>24/7 Counseling</h3>
+                    <p>Confidential mental health support with licensed professionals</p>
+                    <div class="policy-links">
+                        <a href="tel:XXX-XXX-XXXX">Immediate Help Line <i class="fas fa-phone"></i></a>
+                        <a href="#appointment">Book Online Session <i class="fas fa-calendar-check"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Grievance Redressal</h3>
+                    <p>Anonymous complaint system with guaranteed resolution within 72 hours</p>
+                    <div class="policy-links">
+                        <a href="#report-portal">Submit Grievance <i class="fas fa-envelope"></i></a>
+                        <a href="#track-complaint">Track Complaint Status <i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Peer Support Network</h3>
+                    <p>Connect with senior mentors and student support groups</p>
+                    <div class="policy-links">
+                        <a href="#mentor-program">Mentorship Program <i class="fas fa-handshake"></i></a>
+                        <a href="#support-groups">Join Support Circle <i class="fas fa-users"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Academic Support</h3>
+                    <p>Evening tutoring sessions and study resources</p>
+                    <div class="policy-links">
+                        <a href="#timetable">Tutoring Schedule <i class="fas fa-clock"></i></a>
+                        <a href="#e-resources">Digital Library <i class="fas fa-book"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="medical">
+            <h2><i class="fas fa-hospital"></i> Medical Support System</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <i class="fas fa-ambulance"></i>
+                    <h3>Emergency Response</h3>
+                    <p>On-campus medical center with 24/7 ambulance service and tie-ups with local hospitals</p>
+                    <div class="policy-links">
+                        <a href="#medical-procedures">Emergency Procedures</a>
+                        <a href="#health-insurance">Health Insurance Details</a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Regular Checkups</h3>
+                    <p>Quarterly health checkups and vaccination drives for all students</p>
+                    <div class="policy-links">
+                        <a href="#health-schedule">Health Calendar <i class="fas fa-calendar"></i></a>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-pills"></i>
+                    <h3>First Aid</h3>
+                    <p>Well-stocked first aid kits in all classrooms and trained staff</p>
+                    <div class="policy-links">
+                        <a href="#first-aid-guide">First Aid Guide <i class="fas fa-book-medical"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="policy-links">
+            <h3>Important Safety Documents:</h3>
+            <a href="https://ncpcr.gov.in/uploads/165650391762bc3e6d27f93_manual-on-safety-and-security-of-children-in-schools-sep-2021.pdf"><i class="fas fa-file-pdf"></i> School Safety Policy</a>
+            <a href="https://www.smscountry.com/blog/emergency-response-plan-schools/"><i class="fas fa-file-alt"></i> Emergency Procedures</a>
+            <a href="https://lawbhoomi.com/rights-of-students-in-india/"><i class="fas fa-balance-scale"></i> Student Rights Charter</a>
+        </div>
+        <div class="policy-links">
+            <h3>Additional Resources:</h3>
+            <a href="#fire-safety-manual"><i class="fas fa-file-pdf"></i> Complete Fire Safety Manual</a>
+            <a href="#support-handbook"><i class="fas fa-file-alt"></i> Student Support Handbook</a>
+            <a href="#emergency-contacts"><i class="fas fa-address-book"></i> Emergency Contact Directory</a>
+            <a href="#parent-guide"><i class="fas fa-user-friends"></i> Parent Safety Guide</a>
+        </div>
+    </div>
+
+    <div class="containera">
+        <!-- Top header: Newsletter centered -->
+        <div class="top-header">
+            <div class="newsletter-container">
+                <h2>Subscribe</h2>
+                
+                <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+                    <label for="newsletter-email" hidden>Your Email:</label>
+                    <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Three sections: Header, Quick Links, Contact Details -->
+        <div class="three-section">
+            <div class="header1">
+                <p>APJ Abdul Kalam Higher Primary School.<br>
+                Channagiri - 577213</p>
+                <img class="logo" src="logo.png" alt="Logo">
+            </div>
+
+            <div class="social-icons">
+                <h2>FOLLOW US ON</h2>
+                <div class="social-icons-container">
+                    <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+                    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-details">
+                <h2>Contact Details</h2>
+                <address class="address">
+                    <strong>Address:</strong><br>
+                    Opposite of Forest Office, NH_13<br>
+                    Channagiri - 577213
+                </address>
+                <div class="contact-number">
+                    <strong>Contact Number:</strong><br>
+                    +91 9880231572 | +91 9008390323
+                </div>
+                <div class="email">
+                    <strong>Email:</strong> apjschool@gmail.com
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+            APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.<br>
+            Channagiri (T), Davanagere (D)</p>
+        </footer>
+    </div>
+
+    <script>
+        function validateEmailJS() {
+            const emailInput = document.getElementById("newsletter-email");
+            const email = emailInput.value.trim();
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!re.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            return true;
+        }
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 100;
+                    window.scrollTo({
+                        top: target.offsetTop - offset,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle for smaller screens
+        const mobileMenuToggle = () => {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('mobile-visible');
+        };
+
+        // Add mobile menu button for small screens
+        const setupMobileMenu = () => {
+            if (window.innerWidth <= 768) {
+                const nav = document.querySelector('nav');
+                const menuButton = document.createElement('button');
+                menuButton.innerHTML = '<i class="fas fa-bars"></i> Menu';
+                menuButton.classList.add('mobile-menu-button');
+                menuButton.addEventListener('click', mobileMenuToggle);
+                nav.insertBefore(menuButton, nav.firstChild);
+            }
+        };
+
+        // Initialize on load and resize
+        window.addEventListener('load', setupMobileMenu);
+        window.addEventListener('resize', setupMobileMenu);
+
+        // Active link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${section.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

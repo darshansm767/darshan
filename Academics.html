@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Details - [School Name]</title>
+    <style>
+    :root {
+  --text-color: #333333;
+  --dark-bg: #2A5C82;
+  --secondary-color: #6A8A82;
+  --accent-color: #D4AF37;
+  --light-bg: #f8f9fa;
+  --primary-color: #2A5C82;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Header Styles */
+.header_h {
+  background-color: var(--dark-bg);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.header_h h1 {
+  color: white;
+  text-align: center;
+  font-size: 2.8rem;
+  margin: 0;
+}
+
+.header_h img.logo_h {
+  width: 80px;
+  height: auto;
+  margin-right: 1rem;
+}
+
+/* Navigation Styles */
+nav {
+  background-color: var(--dark-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav li {
+  position: relative;
+  margin: 20px;
+  list-style-type: none;
+}
+
+nav a {
+  display: inline-block;
+  color: white;
+  padding: 12px 14px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Dropdown styles */
+.dropdown .sidebar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--dark-bg);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 180px;
+  z-index: 1001;
+  flex-direction: column;
+}
+
+.dropdown:hover .sidebar {
+  display: flex;
+}
+
+.sidebar a {
+  color: white;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.sidebar a:hover {
+  background-color: var(--accent-color);
+}
+
+/* Content Styles */
+.section {
+  margin: 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.highlight {
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent-color);
+  margin: 0;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.curriculum-stage {
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--secondary-color);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.8rem;
+  color: var(--dark-bg);
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--accent-color);
+}
+
+h2 {
+  font-size: 2.2rem;
+  color: var(--dark-bg);
+  margin: 2rem 0 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin: 1.5rem 0 1rem;
+}
+
+/* Lists */
+ul:not(nav ul) {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+ul:not(nav ul) li {
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+ul:not(nav ul) li::before {
+  content: "•";
+  color: var(--accent-color);
+  position: absolute;
+  left: -1.2rem;
+  font-size: 1.2rem;
+}
+
+/* Images */
+.content-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.full-width-image {
+  margin: 0;
+}
+
+/* Interactive Elements */
+.section:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s ease;
+}
+
+/* Additional Components */
+.note {
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.feature {
+  padding: 1.5rem;
+  margin: 0;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.page-break-image {
+  margin: 3rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header_h {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .header_h img.logo_h {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    width: 60px;
+  }
+
+  .header_h h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+  
+  nav li {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header_h h1 {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    font-size: 0.75rem;
+    padding: 8px 10px;
+  }
+
+  body {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+}
+:root {
+    --text-color: #333333;
+    --dark-bg: #2A5C82;
+    --secondary-color: #6A8A82;
+    --accent-color: #D4AF37;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  h1 { font-size: 2.8rem; color: var(--dark-bg); }
+  h2 { font-size: 2.2rem; color: var(--dark-bg); }
+  h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+  .containera {
+      width: 100%;
+      margin: 0;
+      color: white;
+      background-color: var(--dark-bg);
+  }
+  .top-header {
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+  }
+  .newsletter-container {
+      display: inline-block;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  .newsletter-container h2{
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+  }
+  .input-group input {
+      padding: 12px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+  .input-group button {
+      padding: 12px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+  }
+  .input-group button:hover {
+      background-color: #c19a2f;
+  }
+  .three-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+  }
+  .header1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0;
+  }
+  .header1 p {
+    background-color: #2A5C82;
+      color: rgb(255, 255, 255);
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      padding: 0;
+  }
+  .logo {
+      width: 130px;
+      height: auto;
+      margin: 0 auto;
+  }
+
+  .contact-details h2,
+  .social-icons h2 {
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .contact-details {
+      text-align: center;
+      padding: 20px 0;
+  }
+
+  .contact-details address,
+  .contact-details .contact-number,
+  .contact-details .email {
+      margin-bottom: 15px;
+      line-height: 1.6;
+  }
+
+  .social-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+  }
+
+  .social-icons-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+  }
+
+  .social-icons a {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+  }
+
+  .social-icons a:hover {
+      transform: translateY(-3px);
+  }
+  .social-icons .fa-instagram { color: #e1306c; }
+  .social-icons .fa-whatsapp { color: #25d366; }
+  .social-icons .fa-x { color: #000000; }
+  .social-icons .fa-linkedin { color: #0077b5; }
+  .social-icons a:hover .fa-instagram { color: #c13584; }
+  .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+  .social-icons a:hover .fa-x { color: #333333; }
+  .social-icons a:hover .fa-linkedin { color: #005582; }
+
+  footer {
+      padding: 20px;
+      text-align: center;
+      background-color: var(--dark-bg);
+      font-size: 0.9em;
+      line-height: 1.6;
+  }
+  footer p{
+    background-color: #2A5C82;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+      .three-section {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+      }
+      
+      .header1,
+      .contact-details,
+      .social-icons {
+          flex: 1;
+          min-width: 300px;
+          max-width: 400px;
+      }
+      
+      .input-group {
+          flex-direction: row;
+      }
+      
+      .input-group input {
+          width: 250px;
+      }
+      
+      .header1 {
+          flex-direction: row;
+          text-align: left;
+          align-items: flex-start;
+      }
+      
+      .logo {
+          margin-left: 20px;
+          margin-top: 0;
+      }
+      
+      .contact-details h2,
+      .social-icons h2 {
+          text-align: left;
+      }
+      
+      .social-icons {
+          align-items: flex-start;
+      }
+      
+      .social-icons-container {
+          justify-content: flex-start;
+      }
+  }
+</style>
+</head>
+<body>
+<header class="header_h">
+    <img class="logo_h" src="logo.png" alt="School Logo" />
+    <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="newhome.html">Home</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="admissionnew.html">Admissions</a></li>
+      <li class="dropdown">
+        <a href="#">Facility</a>
+        <div class="sidebar">
+          <a href="lab.html">Laboratories</a>
+          <a href="library.html">Library</a>
+          <a href="hostel.html">Hostel</a>
+          <a href="trasport.html">Transport</a>
+          <a href="sports.html">Sports</a>
+          <a href="canteen.html">Food Court</a>
+          <a href="safty.html">Student Safety</a>
+        </div>
+      </li>
+      <li><a href="event.html">School Events</a></li>
+      <li><a href="Faculty.html">Faculty</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+  </nav>
+        
+    <div class="section">
+        <h1>Karnataka State Syllabus: A Foundation for Holistic Education</h1>
+        
+        <div class="highlight">
+            <p>The Karnataka State Syllabus, designed and implemented by the Karnataka Secondary Education Examination Board (KSEEB), forms the cornerstone of primary and secondary education across the state. It's a comprehensive framework that aims to cultivate well-rounded individuals equipped with knowledge, skills, and values necessary for success in a rapidly evolving world.</p>
+        </div>
+    </div>
+    <div class="section">
+        <h2>Core Principles and Objectives</h2>
+        <ul>
+            <li><strong>Inclusivity and Equity:</strong> Equal educational opportunities for all students</li>
+            <li><strong>Holistic Development:</strong> Academic knowledge + life skills development</li>
+            <li><strong>Contextual Relevance:</strong> Integration of local culture and environment</li>
+            <li><strong>Continuous Evaluation (CCE):</strong> Comprehensive assessment system</li>
+            <li><strong>Technology Integration:</strong> Digital literacy and tech-enabled learning</li>
+        </ul>
+    </div>
+        <!-- Add inside Core Principles section after the list -->
+<div class="section">
+    <h2>Core Principles and Objectives</h2>
+    <!-- ... existing list ... -->
+    <div class="image-grid">
+        <img src="group-discussion.webp" alt="Students working together" class="content-image">
+        <img src="digital-learning.webp" alt="Students using tablets" class="content-image">
+    </div>
+</div>
+   <!-- Add after the first main section -->
+   <div class="section">
+    <div class="page-break-image">
+        <img src="classroom-learning.jpg" alt="Students engaged in classroom activities" style="width:100%; max-height:400px; object-fit: cover;">
+    </div>
+</div>
+
+    <div class="section">
+        <h2>Curriculum Framework</h2>
+        
+        <div class="curriculum-stage">
+            <h3>Primary Education (Grades 1-5)</h3>
+            <ul>
+                <li>Core subjects: Languages, Mathematics, EVS</li>
+                <li>Activity-based learning approach</li>
+                <li>Focus on literacy and numeracy foundations</li>
+            </ul>
+        </div>
+
+        <div class="curriculum-stage">
+            <h3>Upper Primary Education (Grades 6-8)</h3>
+            <ul>
+                <li>Introduction to specialized subjects</li>
+                <li>Development of analytical skills</li>
+                <li>Enhanced problem-solving focus</li>
+            </ul>
+        </div>
+
+        <div class="curriculum-stage">
+            <h3>Secondary Education (Grades 9-10)</h3>
+            <ul>
+                <li>SSLC examination preparation</li>
+                <li>Wide range of academic subjects</li>
+                <li>Vocational and technical options</li>
+            </ul>
+        </div>
+    </div>
+    
+<!-- Add after Curriculum Framework -->
+<div class="full-width-image">
+    <img src="school-campus.webp" alt="School campus overview" style="width:100%; height:auto;">
+</div>
+
+    <div class="section">
+        <h2>Key Features</h2>
+        
+        <div class="feature">
+            <h3>Language Proficiency</h3>
+            <p>Emphasis on Kannada and English language mastery with communication skills development</p>
+            </div>
+        <img src="language-lab.webp" alt="Language learning session" class="feature-image">
+    </div>
+        </div>
+
+        <div class="feature">
+            <h3>Science & Technology</h3>
+            <p>Hands-on experiments and digital literacy integration</p>
+        </div>
+
+        <div class="feature">
+            <h3>Social Science & Civic Awareness</h3>
+            <p>Understanding socio-economic issues and citizenship education</p>
+        </div>
+
+        <div class="feature">
+            <h3>Environmental Education</h3>
+            <p>Sustainability practices and ecological awareness</p>
+        </div>
+
+        <div class="feature">
+            <h3>Arts & Physical Education</h3>
+            <p>Creative expression and sports integration for holistic development</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Implementation & Evaluation</h2>
+        <ul>
+            <li>KSEEB-managed examination system</li>
+            <li>Continuous Comprehensive Evaluation (CCE)</li>
+            <li>Regular teacher training programs</li>
+            <li>Quality monitoring mechanisms</li>
+            <li>Dynamic curriculum updates</li>
+        </ul>
+        
+        <div class="highlight">
+            <p>The Karnataka State Syllabus evolves continuously to meet societal needs, aiming to create responsible, productive citizens through quality education.</p>
+        </div>
+    </div>
+
+<!-- Add after the first main section -->
+<div class="section">
+    <div class="page-break-image">
+        <img src="classroom-learning.jpg" alt="Students engaged in classroom activities" style="width:100%; max-height:400px; object-fit: cover;">
+    </div>
+</div>
+
+
+
+    <section class="section">
+        <h2>Our Academy: Nurturing Potential, Inspiring Excellence</h2>
+        <p>At <strong>[School Name]</strong>, we believe in providing a holistic education that goes beyond textbooks and classrooms. Our academy is designed to foster intellectual curiosity, creative expression, and personal growth. We offer a diverse range of academic programs and extracurricular activities to cater to the unique talents and interests of each student.</p>
+    </section>
+
+    <section class="section">
+        <h2>Academic Programs</h2>
+        
+        <h3>Primary School (Grades [Start] - [End])</h3>
+        <ul>
+            <li>A strong foundation in core subjects: Language Arts, Mathematics, Science, and Social Studies</li>
+            <li>Emphasis on developing critical thinking, problem-solving, and communication skills</li>
+            <li>Interactive learning methodologies and hands-on activities</li>
+            <li>Focus on character building and social-emotional development</li>
+        </ul>
+
+        <h3>Middle School (Grades [Start] - [End])</h3>
+        <ul>
+            <li>Rigorous academic curriculum aligned with <strong>[Relevant Educational Standards]</strong></li>
+            <li>Introduction to advanced concepts and specialized subjects</li>
+            <li>Opportunities for project-based learning and collaborative work</li>
+            <li>Guidance and support for academic and personal growth</li>
+        </ul>
+
+        <h3>High School (Grades [Start] - [End])</h3>
+        <ul>
+            <li>Comprehensive preparation for higher education and future careers</li>
+            <li>Specialized streams: <strong>[Science, Commerce, Humanities]</strong></li>
+            <li>Advanced Placement (AP) courses <strong>[If applicable]</strong></li>
+            <li>Dedicated career counseling and college guidance</li>
+            <li>Internship and research opportunities</li>
+        </ul>
+
+        <h3>Specialized Programs</h3>
+        <ul>
+            <li><strong>[List specialized programs]</strong></li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Extracurricular Activities</h2>
+        
+        <h3>Sports</h3>
+        <ul>
+            <li><strong>[List sports offered]</strong></li>
+            <li>Inter-school competitions and sports tournaments</li>
+            <li>Professional coaching and training</li>
+        </ul>
+
+        <h3>Performing Arts</h3>
+        <ul>
+            <li>Music (instrumental and vocal), Dance, Drama, and Theater</li>
+            <li>Annual school productions and cultural events</li>
+            <li>Opportunities to showcase talent and creativity</li>
+        </ul>
+
+        <h3>Clubs and Societies</h3>
+        <ul>
+            <li><strong>[List clubs]</strong></li>
+            <li>Opportunities for students to explore their interests and passions</li>
+            <li>Leadership development and teamwork skills</li>
+        </ul>
+
+        <h3>Visual Arts</h3>
+        <ul>
+            <li>Drawing, Painting, Sculpture, and Digital Arts</li>
+            <li>Art exhibitions and workshops</li>
+        </ul>
+
+        <h3>Community Service</h3>
+        <ul>
+            <li>Opportunities to engage in meaningful community service projects</li>
+            <li>Developing empathy and social responsibility</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Our Faculty</h2>
+        <p>Our dedicated and experienced faculty members are committed to providing quality education and personalized attention to each student. They are passionate about their subjects and strive to create a stimulating and supportive learning environment.</p>
+    </section>
+
+    <section class="section">
+        <h2>Our Facilities</h2>
+        <ul>
+            <li>Well-equipped classrooms and laboratories</li>
+            <li>Library with a vast collection of books and resources</li>
+            <li>Computer labs with internet access</li>
+            <li>Sports fields and indoor sports facilities</li>
+            <li>Auditorium for performances and events</li>
+            <li>Art and music studios</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Our Philosophy</h2>
+        <p>We believe in fostering a culture of academic excellence, character development, and lifelong learning. Our goal is to empower students to become responsible, compassionate, and successful individuals who contribute positively to society.</p>
+    </section>
+
+
+    <div class="note">
+        <h3>Key Considerations for Implementation:</h3>
+        <ul>
+            <li>Replace all [bracketed] placeholders with school-specific information</li>
+            <li>Add relevant images and videos throughout the page</li>
+            <li>Include calls-to-action (e.g., "Schedule Visit" buttons)</li>
+            <li>Optimize for SEO and mobile devices</li>
+        </ul>
+    </div>
+    <div class="containera">
+    <!-- Top header: Newsletter centered -->
+    <div class="top-header">
+      <div class="newsletter-container">
+        <h2>Subscribe</h2>
+        <!-- Display subscription message if exists -->
+        <?php if($message): ?>
+          <p><?php echo $message; ?></p>
+        <?php endif; ?>
+        <!-- Newsletter form with method, action, and onsubmit attribute -->
+        <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+          <label for="newsletter-email" hidden>Your Email:</label>
+          <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Three sections: Header, Quick Links, Contact Details -->
+    <div class="three-section">
+      <div class="header1">
+        <p>APJ Abdul Kalam Higher Primary School.<br>
+        Channagiri - 577213</p>
+        <img class="logo" src="logo.png" alt="Logo">
+      </div>
+
+      <div class="social-icons">
+        <h2>FOLLOW US ON</h2>
+        <div class="social-icons-container">
+          <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-details">
+        <h2>Contact Details</h2>
+        <address class="address">
+          <strong>Address:</strong><br>
+          Opposite of Forest Office, NH_13<br>
+          Channagiri - 577213
+        </address>
+        <div class="contact-number">
+          <strong>Contact Number:</strong><br>
+          +91 9880231572 | +91 9008390323
+        </div>
+        <div class="email">
+          <strong>Email:</strong> apjschool@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+      APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.<br>
+      Channagiri (T), Davanagere (D)</p>
+    </footer>
+  </div>
+  <script>
+    function validateEmailJS() {
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+      // Simple email regex validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

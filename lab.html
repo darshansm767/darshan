@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Laboratories - Interactive Learning Spaces</title>
+    <script src="https://kit.fontawesome.com/face484ba1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --text-color: #333333;       /* Main body text */
+            --dark-bg: #2A5C82;          /* Headings/nav background */
+            --secondary-color: #6A8A82;  /* Subheadings */
+            --accent-color: #D4AF37;     /* Accents/links */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #FFFCF2;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        h1 { font-size: 2.8rem; color: var(--dark-bg); }
+        h2 { font-size: 2.2rem; color: var(--dark-bg); position: relative; padding-bottom: 0.5rem; }
+        h2::after {
+            content: "";
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+            background: var(--dark-bg);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .section { padding: 2rem 0; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+        :root {
+      --text-color: #333333;
+      --dark-bg: #2A5C82;
+      --secondary-color: #6A8A82;
+      --accent-color: #D4AF37;
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--dark-bg);
+      margin: 0;
+    }
+
+    .header_h {
+      background-color: var(--dark-bg);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .header_h h1 {
+      color: white;
+      text-align: center;
+    }
+
+    .header_h img.logo_h {
+      width: 80px;
+      height: auto;
+      margin-right: 1rem;
+    }
+
+    nav {
+      background-color: var(--dark-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      position: relative;
+      margin:20px;
+      
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 12px 14px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    /* Dropdown styles */
+    .dropdown .sidebar {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-bg);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      z-index: 1001;
+      flex-direction: column;
+    }
+
+    .dropdown:hover .sidebar {
+      display: flex;
+    }
+
+    .sidebar a {
+      color: white;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Responsive Header */
+    @media (max-width: 768px) {
+      .header_h {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem;
+      }
+
+      .header_h img.logo_h {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 60px;
+      }
+
+      .header_h h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      nav li{
+        margin:0px;
+        
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header_h h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+      }
+    }
+    :root {
+    --text-color: #333333;
+    --dark-bg: #2A5C82;
+    --secondary-color: #6A8A82;
+    --accent-color: #D4AF37;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  h1 { font-size: 2.8rem; color: var(--dark-bg); }
+  h2 { font-size: 2.2rem; color: var(--dark-bg); }
+  h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+  .containera {
+      width: 100%;
+      margin: 0;
+      color: white;
+      background-color: var(--dark-bg);
+  }
+  .top-header {
+      padding: 20px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+  }
+  .newsletter-container {
+      display: inline-block;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  .newsletter-container h2{
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+  }
+  .input-group input {
+      padding: 12px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+  .input-group button {
+      padding: 12px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+  }
+  .input-group button:hover {
+      background-color: #c19a2f;
+  }
+  .three-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+  }
+  .header1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0;
+  }
+  .header1 p {
+    background-color: #2A5C82;
+      color: rgb(255, 255, 255);
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      padding: 0;
+  }
+  .logo {
+      width: 130px;
+      height: auto;
+      margin: 0 auto;
+  }
+
+  .contact-details h2,
+  .social-icons h2 {
+    color:white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .contact-details {
+      text-align: center;
+      padding: 20px 0;
+  }
+
+  .contact-details address,
+  .contact-details .contact-number,
+  .contact-details .email {
+      margin-bottom: 15px;
+      line-height: 1.6;
+  }
+
+  .social-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+  }
+
+  .social-icons-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+  }
+
+  .social-icons a {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+  }
+
+  .social-icons a:hover {
+      transform: translateY(-3px);
+  }
+  .social-icons .fa-instagram { color: #e1306c; }
+  .social-icons .fa-whatsapp { color: #25d366; }
+  .social-icons .fa-x { color: #000000; }
+  .social-icons .fa-linkedin { color: #0077b5; }
+  .social-icons a:hover .fa-instagram { color: #c13584; }
+  .social-icons a:hover .fa-whatsapp { color: #128c7e; }
+  .social-icons a:hover .fa-x { color: #333333; }
+  .social-icons a:hover .fa-linkedin { color: #005582; }
+
+  footer {
+      padding: 20px;
+      text-align: center;
+      background-color: var(--dark-bg);
+      font-size: 0.9em;
+      line-height: 1.6;
+  }
+  footer p{
+    background-color: #2A5C82;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+      .three-section {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+      }
+      
+      .header1,
+      .contact-details,
+      .social-icons {
+          flex: 1;
+          min-width: 300px;
+          max-width: 400px;
+      }
+      
+      .input-group {
+          flex-direction: row;
+      }
+      
+      .input-group input {
+          width: 250px;
+      }
+      
+      .header1 {
+          flex-direction: row;
+          text-align: left;
+          align-items: flex-start;
+      }
+      
+      .logo {
+          margin-left: 20px;
+          margin-top: 0;
+      }
+      
+      .contact-details h2,
+      .social-icons h2 {
+          text-align: left;
+      }
+      
+      .social-icons {
+          align-items: flex-start;
+      }
+      
+      .social-icons-container {
+          justify-content: flex-start;
+      }
+  }
+    </style>
+</head>
+<body>
+<header class="header_h">
+    <img class="logo_h" src="logo.png" alt="School Logo" />
+    <h1>APJ Abdul Kalam Higher Primary School - Channagiri</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="newhome.html">Home</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="Academics.html">Academics</a></li>
+      <li><a href="admissionnew.html">Admissions</a></li>
+      <li class="dropdown">
+        <a href="#">Facility</a>
+        <div class="sidebar">
+          <a href="lab.html">Laboratories</a>
+          <a href="library.html">Library</a>
+          <a href="hostel.html">Hostel</a>
+          <a href="trasport.html">Transport</a>
+          <a href="sports.html">Sports</a>
+          <a href="canteen.html">Food Court</a>
+          <a href="safty.html">Student Safety</a>
+        </div>
+      </li>
+      <li><a href="event.html">School Events</a></li>
+      <li><a href="Faculty.html">Faculty</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main class="container">
+        <section id="introduction" class="section">
+            <h2><i class="fas fa-school"></i> Introduction</h2>
+            <p>Laboratories play a vital role in a school's educational system, providing students with hands-on learning experiences that complement theoretical knowledge.</p>
+        </section>
+
+        <section id="importance" class="section">
+            <h2><i class="fas fa-lightbulb"></i> Importance of Laboratories</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3><i class="fas fa-hand-paper"></i> Hands-on Learning</h3>
+                    <p>Students apply theoretical concepts practically, enhancing comprehension.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-brain"></i> Skill Development</h3>
+                    <p>Improves analytical, observational, and problem-solving skills.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-shield-alt"></i> Safe Experimentation</h3>
+                    <p>Controlled environment for conducting experiments safely.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="types" class="section">
+            <h2><i class="fas fa-flask"></i> Types of Laboratories</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3><i class="fas fa-atom"></i> Physics Lab</h3>
+                    <p>Equipped with instruments like pendulums, circuits, and lenses.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-vial"></i> Chemistry Lab</h3>
+                    <p>Contains chemicals, glassware, and safety equipment.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-dna"></i> Biology Lab</h3>
+                    <p>Features microscopes, slides, and anatomical models.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="safety" class="section">
+            <h2><i class="fas fa-exclamation-triangle"></i> Safety Measures</h2>
+            <div class="card">
+                <h3><i class="fas fa-user-shield"></i> Protective Gear</h3>
+                <p>Mandatory use of safety goggles, gloves, and lab coats.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-first-aid"></i> Emergency Protocols</h3>
+                <p>Regular drills and accessible safety equipment.</p>
+            </div>
+        </section>
+    </main>
+    <div class="containera">
+    <!-- Top header: Newsletter centered -->
+    <div class="top-header">
+      <div class="newsletter-container">
+        <h2>Subscribe</h2>
+        <!-- Display subscription message if exists -->
+        <?php if($message): ?>
+          <p><?php echo $message; ?></p>
+        <?php endif; ?>
+        <!-- Newsletter form with method, action, and onsubmit attribute -->
+        <form class="input-group" method="post" action="" onsubmit="return validateEmailJS()">
+          <label for="newsletter-email" hidden>Your Email:</label>
+          <input type="email" id="newsletter-email" name="Email" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Three sections: Header, Quick Links, Contact Details -->
+    <div class="three-section">
+      <div class="header1">
+        <p>APJ Abdul Kalam Higher Primary School.<br>
+        Channagiri - 577213</p>
+        <img class="logo" src="logo.png" alt="Logo">
+      </div>
+
+      <div class="social-icons">
+        <h2>FOLLOW US ON</h2>
+        <div class="social-icons-container">
+          <a href="https://www.instagram.com/darshan__salanki?igsh=MWt5MjY2MHo2aXE0dg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/9972362070" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/your-twitter-profile" target="_blank" aria-label="X"><i class="fab fa-x"></i></a>
+          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-details">
+        <h2>Contact Details</h2>
+        <address class="address">
+          <strong>Address:</strong><br>
+          Opposite of Forest Office, NH_13<br>
+          Channagiri - 577213
+        </address>
+        <div class="contact-number">
+          <strong>Contact Number:</strong><br>
+          +91 9880231572 | +91 9008390323
+        </div>
+        <div class="email">
+          <strong>Email:</strong> apjschool@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+      APJ Abdul Kalam Higher Primary School - Channagiri. © 2025 All rights reserved.<br>
+      Channagiri (T), Davanagere (D)</p>
+    </footer>
+  </div>
+
+    
+  <script>
+    function validateEmailJS() {
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+      // Simple email regex validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
+
